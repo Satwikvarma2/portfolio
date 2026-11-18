@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Satwik Kunaparaju — Data Analyst, Data Scientist, Business Analyst">
+<title>Satwik Kunaparaju | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .card .portrait {
+    width: clamp(175px, 34vw, 265px);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 20%;
+    margin-bottom: 28px;
+  }
+  .card .hero h1 {
+    font-size: clamp(27px, 5.8vw, 44px);
+    margin-bottom: 22px;
+  }
+  .card .gold-rule { width: 174px; height: 5px; margin-bottom: 23px; }
+  .card .subtitle {
+    max-width: 540px;
+    font-size: clamp(14px, 2.5vw, 17px);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .card .socials { gap: 18px; margin-bottom: 24px; }
+  .card .socials a { width: 48px; height: 48px; }
+  .card .socials svg { width: 24px; height: 24px; }
+  .card .resume {
+    width: auto;
+    min-width: 0;
+    gap: 8px;
+    padding: 9px 18px;
+    font-size: 15px;
+    border: 0;
+    background: #ffd280;
+  }
+  .card .resume:hover { background: #ffc45b; }
+  .card .resume svg { width: 18px; height: 18px; }
+  .card .section-next {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 54px;
+    margin: 22px auto 0;
+    padding: 7px 8px 7px 16px;
+    border: 1px solid #e2ccaa;
+    border-radius: 16px;
+    background: #fff8ea;
+    color: #27231e;
+    text-align: left;
+    text-decoration: none;
+    transition: background .2s, border-color .2s;
+  }
+  .card .section-next:hover { background: #fff0d0; border-color: #d4a553; }
+  .card .section-next:focus-visible { outline: 2px solid #493723; outline-offset: 4px; }
+  .section-next-copy { display: grid; gap: 2px; }
+  .section-next-copy strong { font-size: 15px; }
+  .section-next-copy small { color: #655541; font-size: 12px; }
+  .section-next-arrow {
+    display: grid;
+    place-items: center;
+    flex: 0 0 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffd280;
+    font-size: 20px;
+  }
+  .card section[hidden], .card footer[hidden] { display: none; }
+  .card section h2:focus { outline-offset: 5px; }
+  .card section h2:focus:not(:focus-visible) { outline: none; }
+  .card section.is-revealing { animation: reveal-section .4s ease-out both; }
+  @keyframes reveal-section {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .card section.is-revealing { animation: none; }
+  }
+  .card section { padding-top: 52px; }
+  .card section h2 { font-size: clamp(24px, 4vw, 30px); }
+  .card section > p { font-size: 16px; line-height: 1.65; }
+  .card #about > p { max-width: 50ch; margin-inline: auto; text-align: left; }
+  .card #about > p:first-of-type { color: #2a2928; font-weight: 600; }
+  .card .skill-grid { gap: 10px; }
+  .card .skill-grid > span { padding: 11px 13px; font-size: 14px; border-radius: 13px; }
+  .card #projects article { text-align: left; }
+
+  .card footer { margin-top: 48px; }
+  @media (min-width: 601px) {
+    body { padding-block: 60px; }
+    .card {
+      max-width: 680px;
+      border-radius: 96px;
+      padding: 60px clamp(32px, 5vw, 54px) 42px;
+    }
+  }
+  #skills .skill-grid > span { display: flex; align-items: center; gap: 10px; }
+  #skills .skill-grid img { flex: none; object-fit: contain; }
+  #projects { max-width: 620px; }
+  #projects article {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+  }
+  #projects article:nth-of-type(even) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
+  }
+  #projects article:nth-of-type(even) .project-image { grid-area: 1 / 1; }
+  #projects article h3 { font-size: 19px; line-height: 1.25; }
+  #projects article p { font-size: 14px; line-height: 1.5; margin: 9px 0 12px; }
+  #projects article a { font-size: 13px; padding: 8px 15px; }
+  #projects .project-image { display: block; width: 100%; height: auto; border-radius: 10px; }
+  @media (max-width: 540px) {
+    #projects article, #projects article:nth-of-type(even) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+    #projects article:nth-of-type(even) .project-image { grid-area: auto; }
+    #projects .project-image { max-width: 260px; }
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    max-width: 100%;
+    padding: 7px 12px;
+    border: 1px solid #e2ccaa;
+    border-radius: 24px;
+    background: #ffd280;
+    color: #27231e;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .contact-links a:hover { background: #ffc45b; }
+  .contact-links a:focus-visible { outline: 2px solid #493723; outline-offset: 3px; }
+  .contact-links a span { overflow-wrap: anywhere; }
+  .contact-links svg { width: 16px; height: 16px; flex: none; }
+</style>
+</head>
+<body>
+<main class="card">
+  <header class="hero" id="home">
+    <img class="portrait" src="assets/graduation-portrait-upright.jpg" alt="Satwik wearing his graduation cap and gown">
+    <h1>SATWIK<br>KUNAPARAJU</h1>
+    <div class="gold-rule" aria-hidden="true"></div>
+    <p class="subtitle">Data Engineer | Azure Data Platform | Azure Synapse | Azure SQL | Data Pipelines | CI/CD | Data Migration</p>
+    <nav class="socials" aria-label="Social profiles">
+      <a href="https://www.linkedin.com/in/satwikvarmakunaparaju/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.452v6.289zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.12 20.452H3.554V9H7.12v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg></a>
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=satwikvarmakunaparaju%40gmail.com" aria-label="Compose email in Gmail" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 8 10-8"/></svg></a>
+      <a href="https://github.com/Satwikvarma2" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.09c-3.14.68-3.8-1.33-3.8-1.33-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.69 1.24 3.35.95.1-.74.4-1.24.73-1.53-2.51-.29-5.15-1.26-5.15-5.59 0-1.24.44-2.25 1.18-3.04-.12-.29-.51-1.44.11-3 0 0 .96-.31 3.08 1.16a10.65 10.65 0 0 1 5.61 0c2.12-1.47 3.08-1.16 3.08-1.16.62 1.56.23 2.71.11 3 .74.79 1.18 1.8 1.18 3.04 0 4.34-2.65 5.3-5.17 5.59.41.35.78 1.05.78 2.12v3.15c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg></a>
+    </nav>
+    <a class="resume" href="https://drive.google.com/file/d/15_39ZvSh3DPU_itkJtJqrqIdoHCabHTE/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 12h6M9 16h6"/></svg>View Resume</a>
+    <a class="section-next" href="#about" aria-controls="about">
+      <span class="section-next-copy"><strong>Click on me to learn more</strong><small>About Me</small></span>
+      <span class="section-next-arrow" aria-hidden="true">↓</span>
+    </a>
+  </header>
+  <section id="about"><h2>About Me</h2><div class="small-rule"></div>
+    <p>I'm a Data Engineer at Infosys, working on Microsoft projects focused on building and modernizing scalable, secure cloud data platforms.</p>
+    <p>I specialize in Azure Synapse Analytics, Microsoft Fabric, Azure Data Factory, Azure SQL, Python, and Azure DevOps. My work involves data pipelines, cloud migrations, CI/CD automation, and secure system integrations.</p>
+    <p>With a Master's in Data Science from Seattle University, I'm passionate about solving complex engineering challenges and building reliable, production-ready data solutions that deliver meaningful business impact.</p>
+    <a class="section-next" href="#skills" aria-controls="skills">
+      <span class="section-next-copy"><strong>Explore my toolkit</strong><small>Skills</small></span>
+      <span class="section-next-arrow" aria-hidden="true">↓</span>
+    </a>
+  </section>
+  <section id="skills"><h2>Skills</h2><div class="small-rule"></div>
+    <div class="skill-grid">
+      <span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjQ1NzQ3IiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOCIgcnk9IjMiLz48cGF0aCBkPSJNNCA1djE0YzAgMS42NiAzLjU4IDMgOCAzczgtMS4zNCA4LTNWNU00IDEyYzAgMS42NiAzLjU4IDMgOCAzczgtMS4zNCA4LTMiLz48L3N2Zz4=" width="24" height="24" alt="">SQL</span>
+      <span><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8c3ZnIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTVweCIgdmlld0JveD0iMCAwIDI1NiAyNTUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPgogICAgPGRlZnM+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSIxMi45NTkzNTk0JSIgeTE9IjEyLjAzOTM5MjglIiB4Mj0iNzkuNjM4ODMyNSUiIHkyPSI3OC4yMDA4NTM4JSIgaWQ9ImxpbmVhckdyYWRpZW50LTEiPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMzg3RUI4IiBvZmZzZXQ9IjAlIj48L3N0b3A+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMzNjY5OTQiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSIxOS4xMjc1MjUlIiB5MT0iMjAuNTc5MTgxMyUiIHgyPSI5MC43NDE1MzI4JSIgeTI9Ijg4LjQyOTAzNzIlIiBpZD0ibGluZWFyR3JhZGllbnQtMiI+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNGRkUwNTIiIG9mZnNldD0iMCUiPjwvc3RvcD4KICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZGQzMzMSIgb2Zmc2V0PSIxMDAlIj48L3N0b3A+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnPgogICAgICAgIDxwYXRoIGQ9Ik0xMjYuOTE1ODY2LDAuMDcyMjc1NTQ5MSBDNjIuMDgzNTgzMSwwLjA3MjI4MDE3MzMgNjYuMTMyMTI4OCwyOC4xODc0NjQ4IDY2LjEzMjEyODgsMjguMTg3NDY0OCBMNjYuMjA0NDA0Myw1Ny4zMTQ1MTE1IEwxMjguMDcyMjc2LDU3LjMxNDUxMTUgTDEyOC4wNzIyNzYsNjYuMDU5ODUzMiBMNDEuNjMwNzE3MSw2Ni4wNTk4NTMyIEM0MS42MzA3MTcxLDY2LjA1OTg1MzIgMC4xNDQ1NTEwOTgsNjEuMzU0OTQzOCAwLjE0NDU1MTA5OCwxMjYuNzcxMzE1IEMwLjE0NDU0NjQ3NCwxOTIuMTg3NjczIDM2LjM1NDYwMTksMTg5Ljg2Nzg3MSAzNi4zNTQ2MDE5LDE4OS44Njc4NzEgTDU3Ljk2NDk5MTUsMTg5Ljg2Nzg3MSBMNTcuOTY0OTkxNSwxNTkuNTEyMTQgQzU3Ljk2NDk5MTUsMTU5LjUxMjE0IDU2LjgwMDEzNjMsMTIzLjMwMjA4OSA5My41OTY4Mzc5LDEyMy4zMDIwODkgTDE1NC45NTg3OCwxMjMuMzAyMDg5IEMxNTQuOTU4NzgsMTIzLjMwMjA4OSAxODkuNDM0MjE4LDEyMy44NTkzODYgMTg5LjQzNDIxOCw4OS45ODMwNjA0IEwxODkuNDM0MjE4LDMzLjk2OTUwODggQzE4OS40MzQyMTgsMzMuOTY5NTA0MSAxOTQuNjY4NTQxLDAuMDcyMjc1NTQ5MSAxMjYuOTE1ODY2LDAuMDcyMjc1NTQ5MSBMMTI2LjkxNTg2NiwwLjA3MjI3NTU0OTEgTDEyNi45MTU4NjYsMC4wNzIyNzU1NDkxIFogTTkyLjgwMTgwNjksMTkuNjU4OTQ5NyBDOTguOTU3MjA2OCwxOS42NTg5NDUyIDEwMy45MzIyNDIsMjQuNjMzOTg0NiAxMDMuOTMyMjQyLDMwLjc4OTM4NDUgQzEwMy45MzIyNDYsMzYuOTQ0Nzg0NCA5OC45NTcyMDY4LDQxLjkxOTgxOTMgOTIuODAxODA2OSw0MS45MTk4MTkzIEM4Ni42NDY0MDcsNDEuOTE5ODIzOSA4MS42NzEzNzIxLDM2Ljk0NDc4NDQgODEuNjcxMzcyMSwzMC43ODkzODQ1IEM4MS42NzEzNjc0LDI0LjYzMzk4NDYgODYuNjQ2NDA3LDE5LjY1ODk0OTcgOTIuODAxODA2OSwxOS42NTg5NDk3IEw5Mi44MDE4MDY5LDE5LjY1ODk0OTcgTDkyLjgwMTgwNjksMTkuNjU4OTQ5NyBaIiBmaWxsPSJ1cmwoI2xpbmVhckdyYWRpZW50LTEpIj48L3BhdGg+CiAgICAgICAgPHBhdGggZD0iTTEyOC43NTcxMDEsMjU0LjEyNjI3MSBDMTkzLjU4OTQwMywyNTQuMTI2MjcxIDE4OS41NDA4MzksMjI2LjAxMTA4MSAxODkuNTQwODM5LDIyNi4wMTEwODEgTDE4OS40Njg1NjQsMTk2Ljg4NDAzNSBMMTI3LjYwMDY5MiwxOTYuODg0MDM1IEwxMjcuNjAwNjkyLDE4OC4xMzg2OTMgTDIxNC4wNDIyNTEsMTg4LjEzODY5MyBDMjE0LjA0MjI1MSwxODguMTM4NjkzIDI1NS41Mjg0MTcsMTkyLjg0MzU4OSAyNTUuNTI4NDE3LDEyNy40MjcyMDggQzI1NS41Mjg0NCw2Mi4wMTA4NTY2IDIxOS4zMTgzNjYsNjQuMzMwNjU4OSAyMTkuMzE4MzY2LDY0LjMzMDY1ODkgTDE5Ny43MDc5NzYsNjQuMzMwNjU4OSBMMTk3LjcwNzk3Niw5NC42ODYzODMyIEMxOTcuNzA3OTc2LDk0LjY4NjM4MzIgMTk4Ljg3Mjg1LDEzMC44OTY0MzQgMTYyLjA3NjEzLDEzMC44OTY0MzQgTDEwMC43MTQxODIsMTMwLjg5NjQzNCBDMTAwLjcxNDE4MiwxMzAuODk2NDM0IDY2LjIzODc0NSwxMzAuMzM5MTM4IDY2LjIzODc0NSwxNjQuMjE1NDg2IEw2Ni4yMzg3NDUsMjIwLjIyOTAzOCBDNjYuMjM4NzQ1LDIyMC4yMjkwMzggNjEuMDA0NDIyNSwyNTQuMTI2MjcxIDEyOC43NTcxMDEsMjU0LjEyNjI3MSBMMTI4Ljc1NzEwMSwyNTQuMTI2MjcxIEwxMjguNzU3MTAxLDI1NC4xMjYyNzEgWiBNMTYyLjg3MTE2LDIzNC41Mzk1OTcgQzE1Ni43MTU3NTksMjM0LjUzOTU5NyAxNTEuNzQwNzI2LDIyOS41NjQ1NjQgMTUxLjc0MDcyNiwyMjMuNDA5MTYyIEMxNTEuNzQwNzI2LDIxNy4yNTM3NTkgMTU2LjcxNTc1OSwyMTIuMjc4NzI3IDE2Mi44NzExNiwyMTIuMjc4NzI3IEMxNjkuMDI2NTYzLDIxMi4yNzg3MjcgMTc0LjAwMTU5NSwyMTcuMjUzNzU5IDE3NC4wMDE1OTUsMjIzLjQwOTE2MiBDMTc0LjAwMTYxOCwyMjkuNTY0NTY0IDE2OS4wMjY1NjMsMjM0LjUzOTU5NyAxNjIuODcxMTYsMjM0LjUzOTU5NyBMMTYyLjg3MTE2LDIzNC41Mzk1OTcgTDE2Mi44NzExNiwyMzQuNTM5NTk3IFoiIGZpbGw9InVybCgjbGluZWFyR3JhZGllbnQtMikiPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+Cg==" width="24" height="24" alt="">Python</span>
+      <span><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjQycHgiIHZpZXdCb3g9IjAgMCAyNTYgMjQyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KICAgIDx0aXRsZT5BenVyZTwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgeDE9IjU4Ljk3MTczODklIiB5MT0iNy40MTE0NzI0JSIgeDI9IjM3LjE5MDUxOTYlIiB5Mj0iMTAzLjc2MTgyJSIgaWQ9IkF6dXJlLWxpbmVhckdyYWRpZW50LTEiPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMTE0QThCIiBvZmZzZXQ9IjAlIj48L3N0b3A+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMwNjY5QkMiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSI1OS43MTg4NDQ3JSIgeTE9IjUyLjMxMjcyODklIiB4Mj0iNTIuNjkxNDMzMiUiIHkyPSI1NC44NjM2NTU2JSIgaWQ9IkF6dXJlLWxpbmVhckdyYWRpZW50LTIiPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMyIgb2Zmc2V0PSIwJSI+PC9zdG9wPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMiIgb2Zmc2V0PSI3LjElIj48L3N0b3A+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xIiBvZmZzZXQ9IjMyLjElIj48L3N0b3A+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wNSIgb2Zmc2V0PSI2Mi4zJSI+PC9zdG9wPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSIzNy4yNzg5Mzk5JSIgeTE9IjQuNjAwMDU3ODklIiB4Mj0iNjIuNDczMzkwNCUiIHkyPSI5OS45Nzk0OTYzJSIgaWQ9IkF6dXJlLWxpbmVhckdyYWRpZW50LTMiPgogICAgICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjM0NDQkY0IiBvZmZzZXQ9IjAlIj48L3N0b3A+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMyODkyREYiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8Zz4KCQkJCTxwYXRoIGQ9Ik04NS4zNDMyNTM2LDAuMDAyOTA5MzEyMjUgTDE2MS4wOTU5MjYsMC4wMDI5MDkzMTIyNSBMODIuNDU3MjE1OCwyMzMuMDAwOTk5IEM4MC43OTk5NTA2LDIzNy45MTAyNjYgNzYuMTk2MzQwOSwyNDEuMjE2ODk3IDcxLjAxNDg5MDgsMjQxLjIxNjg5NyBMMTIuMDYwNTg3NCwyNDEuMjE2ODk3IEM4LjE3NjMxNzA4LDI0MS4yMTY4OTcgNC41Mjk2MzQ2NSwyMzkuMzQ2Nzc3IDIuMjYzOTg5NTYsMjM2LjE5MTcxNiBDLTAuMDAxNjU1NTQxMzYsMjMzLjAzNjY1NSAtMC42MDg4NDU3MDUsMjI4Ljk4MzQyOCAwLjYzMjgwODg5NiwyMjUuMzAyOTU5IEw3My44OTgwMTkyLDguMjE4ODA3MSBDNzUuNTU0NjI0MiwzLjMwNzM3NzQyIDgwLjE1OTk2NDksMCA4NS4zNDMyNTM2LDAgTDg1LjM0MzI1MzYsMC4wMDI5MDkzMTIyNSBaIiBmaWxsPSJ1cmwoI0F6dXJlLWxpbmVhckdyYWRpZW50LTEpIj48L3BhdGg+CgkJCQk8cGF0aCBkPSJNMTk1LjQyMjkwMSwxNTYuMjgyNDMyIEw3NS4yOTczOTg0LDE1Ni4yODI0MzIgQzczLjAxMTkyMzEsMTU2LjI3OTkwOCA3MC45NTc3MzA0LDE1Ny42NzYyODcgNzAuMTE5MjM4MywxNTkuODAyMzk1IEM2OS4yODA3NDYxLDE2MS45Mjg1MDMgNjkuODI4Nzk0NiwxNjQuMzUxMTUxIDcxLjUwMDc0NTksMTY1LjkwOTM0OSBMMTQ4LjY5MDYxOCwyMzcuOTU1NTU4IEMxNTAuOTM3OTk4LDI0MC4wNTE5NzcgMTUzLjg5NzEzOCwyNDEuMjE2ODk3IDE1Ni45NzA1MjEsMjQxLjIxNjg5NyBMMjI0Ljk5MDI0MSwyNDEuMjE2ODk3IEwxOTUuNDIyOTAxLDE1Ni4yODI0MzIgWiIgZmlsbD0iIzAwNzhENCI+PC9wYXRoPgoJCQkJPHBhdGggZD0iTTg1LjM0MzI1MzYsMC4wMDI4MjAyNjgzMSBDODAuMDk4MjIyMywtMC4wMTcyMTg1NjUgNzUuNDQ5OTAzMSwzLjM3Njc3MzU4IDczLjg3MTgzNTQsOC4zNzg4MTkyNyBMMC43MjI5OTc1NzYsMjI1LjEwNTEyNiBDLTAuNjAyNjM1Njg3LDIyOC44MDAxODMgLTAuMDQ0MzU2MjYxMSwyMzIuOTA5NDMxIDIuMjE5MDQ2ODUsMjM2LjExNjg4NCBDNC40ODI0NDk5NiwyMzkuMzI0MzM3IDguMTY2OTUxNTQsMjQxLjIyNzUwNSAxMi4wOTI1ODk4LDI0MS4yMTY5NDEgTDcyLjU2ODQ2MzUsMjQxLjIxNjk0MSBDNzcuMTU0MDM5LDI0MC4zOTc1ODYgODAuOTQ0MTAyNywyMzcuMTc0MzY0IDgyLjQ4OTIxODMsMjMyLjc3OTg5MSBMOTcuMDc2NTA5OSwxODkuNzg4OTg0IEwxNDkuMTgyMjkyLDIzOC4zODkwNDYgQzE1MS4zNjU4MTQsMjQwLjE5NTE0NyAxNTQuMTA0OTI4LDI0MS4xOTM4MDMgMTU2LjkzODUxOSwyNDEuMjE2OTQxIEwyMjQuNzA1MTI5LDI0MS4yMTY5NDEgTDE5NC45ODM1OTUsMTU2LjI4MjQzNSBMMTA4LjM0MTM2NywxNTYuMzAyOCBMMTYxLjM2OTQwMSwwLjAwMjgyMDI2ODMxIEw4NS4zNDMyNTM2LDAuMDAyODIwMjY4MzEgWiIgZmlsbD0idXJsKCNBenVyZS1saW5lYXJHcmFkaWVudC0yKSI+PC9wYXRoPgoJCQkJPHBhdGggZD0iTTE4Mi4wOTgyNTEsOC4yMDcxNjk4NSBDMTgwLjQ0Mzk4NSwzLjMwMzY1MTc3IDE3NS44NDU1MTcsMC4wMDI5MDkzMTIyNSAxNzAuNjcwNDcyLDAuMDAyOTA5MzEyMjUgTDg2LjI0NTE0MDQsMC4wMDI5MDkzMTIyNSBDOTEuNDE5ODk2NiwwLjAwMjkwOTMxMjI1IDk2LjAxNzg5NTYsMy4zMDQyMTE2MiA5Ny42NzI5MTg5LDguMjA3MTY5ODUgTDE3MC45NDEwMzksMjI1LjMwMDA1IEMxNzIuMTgzNjMsMjI4Ljk4MTE5MSAxNzEuNTc2OTk2LDIzMy4wMzU1MDEgMTY5LjMxMTM1MSwyMzYuMTkxNzE2IEMxNjcuMDQ1NzA1LDIzOS4zNDc5MyAxNjMuMzk4NDY3LDI0MS4yMTk4MDYgMTU5LjUxMzI2LDI0MS4yMTk4MDYgTDI0My45NDE1MDEsMjQxLjIxOTgwNiBDMjQ3LjgyNjE5NiwyNDEuMjE5ODA2IDI1MS40NzI1NjYsMjM5LjM0NjYwNSAyNTMuNzM3NTMxLDIzNi4xOTA1MzQgQzI1Ni4wMDI0OTYsMjMzLjAzNDQ2NCAyNTYuNjA4Nzk4LDIyOC45ODA3MDUgMjU1LjM2NjM3MSwyMjUuMzAwMDUgTDE4Mi4wOTgyNTEsOC4yMDcxNjk4NSBaIiBmaWxsPSJ1cmwoI0F6dXJlLWxpbmVhckdyYWRpZW50LTMpIj48L3BhdGg+CgkJPC9nPgo8L3N2Zz4K" width="24" height="24" alt="">Microsoft Azure</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyBpZD0iZjllZDk2OTAtNjc1My00M2E3LThiMzItZDY2YWM3YjhhOTlhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImY3MTBhMzY0LTA4M2YtNDk0Yy05ZDk2LTg5YjkyZWUyZDVhOCIgeDE9IjAuNSIgeTE9IjkuNzciIHgyPSI5IiB5Mj0iOS43NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNWJhMSIgLz48c3RvcCBvZmZzZXQ9IjAuMDciIHN0b3AtY29sb3I9IiMwMDYwYTkiIC8+PHN0b3Agb2Zmc2V0PSIwLjM2IiBzdG9wLWNvbG9yPSIjMDA3MWM4IiAvPjxzdG9wIG9mZnNldD0iMC41MiIgc3RvcC1jb2xvcj0iIzAwNzhkNCIgLz48c3RvcCBvZmZzZXQ9IjAuNjQiIHN0b3AtY29sb3I9IiMwMDc0Y2QiIC8+PHN0b3Agb2Zmc2V0PSIwLjgxIiBzdG9wLWNvbG9yPSIjMDA2YWJiIiAvPjxzdG9wIG9mZnNldD0iMC45OSIgc3RvcC1jb2xvcj0iIzAwNWJhMSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48dGl0bGU+SWNvbi1kYXRhYmFzZXMtMTI2PC90aXRsZT48Zz48cGF0aCBkPSJNMTMuMjUsMTAuNDhWNi41N2EuMTQuMTQsMCwwLDAtLjI0LS4xbC00LDRMNC44NSwxNC42M1YxNy41SDE2LjkzYS41Ni41NiwwLDAsMCwuNTctLjU3VjYuNTdhLjE0LjE0LDAsMCwwLS4yNC0uMVoiIGZpbGw9IiMwMDViYTEiIC8+PHBhdGggZD0iTTQuNzUsMy41OEMyLjQsMy41OC41LDIuODkuNSwyVjcuNjdoMHY5LjI2YS41Ni41NiwwLDAsMCwuNTcuNTdIOVYyQzksMi44OSw3LjEsMy41OCw0Ljc1LDMuNThaIiBmaWxsPSJ1cmwoI2Y3MTBhMzY0LTA4M2YtNDk0Yy05ZDk2LTg5YjkyZWUyZDVhOCkiIC8+PHJlY3QgeD0iMTIuOTEiIHk9IjEyLjk3IiB3aWR0aD0iMi4yNyIgaGVpZ2h0PSIyLjI3IiByeD0iMC4yOCIgZmlsbD0iI2ZmZiIgLz48cmVjdCB4PSI4Ljk3IiB5PSIxMi45NyIgd2lkdGg9IjIuMjciIGhlaWdodD0iMi4yNyIgcng9IjAuMjgiIGZpbGw9IiNmZmYiIC8+PHJlY3QgeD0iNS4wMyIgeT0iMTIuOTciIHdpZHRoPSIyLjI3IiBoZWlnaHQ9IjIuMjciIHJ4PSIwLjI4IiBmaWxsPSIjZmZmIiAvPjxwYXRoIGQ9Ik05LDJjMCwuODUtMS45LDEuNTQtNC4yNSwxLjU0Uy41LDIuODkuNSwyLDIuNC41LDQuNzUuNSw5LDEuMTksOSwyIiBmaWxsPSIjZWFlYWVhIiAvPjxwYXRoIGQ9Ik04LDEuOTFjMCwuNTUtMS40NiwxLTMuMjYsMXMtMy4yNi0uNDMtMy4yNi0xUzMsLjk0LDQuNzUuOTQsOCwxLjM3LDgsMS45MSIgZmlsbD0iIzUwZTZmZiIgLz48cGF0aCBkPSJNNC43NSwyLjE0YTguMDcsOC4wNywwLDAsMC0yLjU4LjM3LDcuNjQsNy42NCwwLDAsMCwyLjU4LjM4LDcuNjQsNy42NCwwLDAsMCwyLjU4LS4zOEE4LjA3LDguMDcsMCwwLDAsNC43NSwyLjE0WiIgZmlsbD0iIzE5OGFiMyIgLz48L2c+PC9zdmc+" width="24" height="24" alt="">Azure Data Factory</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyBpZD0iYjFlNzE0NzktMjEzOC00NGUwLWFkZjAtMDJmZTlmZWQ1YzFlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48cGF0aCBkPSJNMS4xNTUsNC45M3YuNTEyTDksOS44NjhsNy4wMDYtMy45NTcsMCwxLjZMOSwxMS40OTEsMS41NSw3LjI1OGwtLjM5NS4yMlYxMC41NEw5LDE0Ljk1NWw3LjAwNi0zLjk0MiwwLDEuNTg2TDksMTYuNTgxLDEuNTUsMTIuMzQ3bC0uMzk1LjIydi41MTlMOSwxNy41bDcuODQ1LTQuNDE0VjEwLjAyMWwtLjQtLjIxOEw5LDE0LjAzNiwxLjk5MiwxMC4wNTRWOC40NzZMOSwxMi40MTQsMTYuODQ1LDhWNC45NzhsLS40LS4yMTlMOSw4Ljk5MywyLjM1Miw1LjIxNSw5LDEuNDZsNS40NzYsMy4wOTQuNDc5LS4yNjlWMy44NjNMOSwuNVoiIGZpbGw9IiNmZjM2MjEiIC8+PC9zdmc+" width="24" height="24" alt="">Azure Databricks</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9ImN1cnJlbnRDb2xvciIgcm9sZT0iaW1nIiBmb2N1c2FibGU9ImZhbHNlIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9InVybCgjaTdjYjkyZC1hKSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJtMy4xNDggMjEuMzIyLS40MSAxLjUwMWMtLjE1My40OC0uMzY3IDEuMTg2LS40ODIgMS44MTRhMy45NCAzLjk0IDAgMCAwIDMuMjQ3IDUuMzEzYy41NTQuMDggMS4xODEuMDc1IDEuODg0LS4wMjhsMy4yMy0uNDQ2YTIuMDUgMi4wNSAwIDAgMCAxLjY5NS0xLjQ5bDIuMjIzLTguMTY0eiIgY2xpcC1ydWxlPSJldmVub2RkIj48L3BhdGg+PHBhdGggZmlsbD0idXJsKCNpN2NiOTJkLWIpIiBkPSJNNi4yOTggMjEuNzFjLTMuNDA0LjUyNy00LjEwMyAzLjA5Ni00LjEwMyAzLjA5NmwzLjI2LTExLjk3OSAxNy4wMzUtMi4zMDQtMi4zMjMgOC40MzhjLS4xMi40NTItLjUuNzk4LS45NzEuODdsLS4wOTUuMDE2LTEyLjg5OCAxLjg3OXoiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtYykiIGZpbGwtb3BhY2l0eT0iMC44IiBkPSJNNi4yOTggMjEuNzFjLTMuNDA0LjUyNy00LjEwMyAzLjA5Ni00LjEwMyAzLjA5NmwzLjI2LTExLjk3OSAxNy4wMzUtMi4zMDQtMi4zMjMgOC40MzhjLS4xMi40NTItLjUuNzk4LS45NzEuODdsLS4wOTUuMDE2LTEyLjg5OCAxLjg3OXoiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtZCkiIGQ9Im04LjIzIDE0LjA2NiAxOC44Ni0yLjc4NmMuNDQ4LS4wNi44MTEtLjM5LjkyNi0uODJsMS45NDYtNy4wNDNhMS4xMTYgMS4xMTYgMCAwIDAtMS4yMTgtMS40MDhMMTAuNzUgNC42NjhhNS4wMyA1LjAzIDAgMCAwLTQuMDQ0IDMuNjM2TDQuMTEgMTcuNzA5Yy41Mi0xLjkwMi44NC0zLjA1IDQuMTItMy42NDMiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtZSkiIGQ9Im04LjIzIDE0LjA2NiAxOC44Ni0yLjc4NmMuNDQ4LS4wNi44MTEtLjM5LjkyNi0uODJsMS45NDYtNy4wNDNhMS4xMTYgMS4xMTYgMCAwIDAtMS4yMTgtMS40MDhMMTAuNzUgNC42NjhhNS4wMyA1LjAzIDAgMCAwLTQuMDQ0IDMuNjM2TDQuMTEgMTcuNzA5Yy41Mi0xLjkwMi44NC0zLjA1IDQuMTItMy42NDMiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtZikiIGZpbGwtb3BhY2l0eT0iMC40IiBkPSJtOC4yMyAxNC4wNjYgMTguODYtMi43ODZjLjQ0OC0uMDYuODExLS4zOS45MjYtLjgybDEuOTQ2LTcuMDQzYTEuMTE2IDEuMTE2IDAgMCAwLTEuMjE4LTEuNDA4TDEwLjc1IDQuNjY4YTUuMDMgNS4wMyAwIDAgMC00LjA0NCAzLjYzNkw0LjExIDE3LjcwOWMuNTItMS45MDIuODQtMy4wNSA0LjEyLTMuNjQzIj48L3BhdGg+PHBhdGggZmlsbD0idXJsKCNpN2NiOTJkLWcpIiBkPSJNOC4yMyAxNC4wNjZjLTIuNzMxLjQ5NS0zLjQwOSAxLjM3NC0zLjg2IDIuNzUzbC0yLjE3NSA3Ljk4OHMuNjk1LTIuNTQzIDQuMDU4LTMuMDg3TDE5LjEgMTkuODQ4bC4wOTUtLjAxNmMuNDcxLS4wNzEuODUxLS40MTkuOTcyLS44N2wxLjkxMS02Ljk0MS0xMy44NSAyLjA0NVoiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtaCkiIGZpbGwtb3BhY2l0eT0iMC4yIiBkPSJNOC4yMyAxNC4wNjZjLTIuNzMxLjQ5NS0zLjQwOSAxLjM3NC0zLjg2IDIuNzUzbC0yLjE3NSA3Ljk4OHMuNjk1LTIuNTQzIDQuMDU4LTMuMDg3TDE5LjEgMTkuODQ4bC4wOTUtLjAxNmMuNDcxLS4wNzEuODUxLS40MTkuOTcyLS44N2wxLjkxMS02Ljk0MS0xMy44NSAyLjA0NVoiPjwvcGF0aD48cGF0aCBmaWxsPSJ1cmwoI2k3Y2I5MmQtaSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMjUzIDIxLjcyYy0yLjg0Mi40Ni0zLjc3NSAyLjM0Mi0zLjk5NyAyLjkxNmEzLjk0IDMuOTQgMCAwIDAgMy4yNDcgNS4zMTRjLjU1NC4wOCAxLjE4MS4wNzUgMS44ODQtLjAyOGwzLjIzLS40NDZhMi4wNSAyLjA1IDAgMCAwIDEuNjk1LTEuNDlsMi4wMjYtNy40NDN6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9Imk3Y2I5MmQtYSIgeDE9IjguMjY4IiB4Mj0iOC4yNjgiIHkxPSIzMC4wMDUiIHkyPSIxOS44MjIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuMDU2IiBzdG9wLWNvbG9yPSIjMkFBQzk0Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjE1NSIgc3RvcC1jb2xvcj0iIzIzOUM4NyI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC4zNzIiIHN0b3AtY29sb3I9IiMxNzdFNzEiPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjAuNTg4IiBzdG9wLWNvbG9yPSIjMEU2OTYxIj48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjc5OSIgc3RvcC1jb2xvcj0iIzA5NUQ1NyI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA4NTk1NCI+PC9zdG9wPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJpN2NiOTJkLWIiIHgxPSIyMS4xMzQiIHgyPSIxMS4zMDIiIHkxPSIyMi42MTciIHkyPSIxMS45MjMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuMDQyIiBzdG9wLWNvbG9yPSIjQUJFODhFIj48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjU0OSIgc3RvcC1jb2xvcj0iIzJBQUE5MiI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC45MDYiIHN0b3AtY29sb3I9IiMxMTc4NjUiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iaTdjYjkyZC1jIiB4MT0iLTMuMDI4IiB4Mj0iNi4zMjkiIHkxPSIyMi4wOTciIHkyPSIxOC45MDYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjNkFENkY5Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNkFENkY5IiBzdG9wLW9wYWNpdHk9IjAiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iaTdjYjkyZC1kIiB4MT0iNC4xMSIgeDI9IjI5LjAxNiIgeTE9IjkuODU1IiB5Mj0iOS44NTUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuMDQzIiBzdG9wLWNvbG9yPSIjMjVGRkQ0Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjg3NCIgc3RvcC1jb2xvcj0iIzU1RERCOSI+PC9zdG9wPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJpN2NiOTJkLWUiIHgxPSI0LjExIiB4Mj0iMjYuNTQ2IiB5MT0iNi4zNzMiIHkyPSIxNi43OTEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjNkFENkY5Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjIzIiBzdG9wLWNvbG9yPSIjNjBFOUQwIj48L3N0b3A+PHN0b3Agb2Zmc2V0PSIwLjY1MSIgc3RvcC1jb2xvcj0iIzZERTlCQiI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC45OTQiIHN0b3AtY29sb3I9IiNBQkU4OEUiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iaTdjYjkyZC1mIiB4MT0iNi4xODUiIHgyPSIxOC4zODUiIHkxPSI4LjMyMyIgeTI9IjExLjAyMSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC40NTkiIHN0b3AtY29sb3I9IiNmZmYiPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCI+PC9zdG9wPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJpN2NiOTJkLWciIHgxPSIxMC4yMyIgeDI9IjEwLjUxOCIgeTE9IjE4Ljc3NCIgeTI9IjEwLjIxOSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC4yMDUiIHN0b3AtY29sb3I9IiMwNjNEM0IiIHN0b3Atb3BhY2l0eT0iMCI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC41ODYiIHN0b3AtY29sb3I9IiMwNjNEM0IiIHN0b3Atb3BhY2l0eT0iMC4yMzciPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjAuODcyIiBzdG9wLWNvbG9yPSIjMDYzRDNCIiBzdG9wLW9wYWNpdHk9IjAuNzUiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iaTdjYjkyZC1oIiB4MT0iMS4xNjYiIHgyPSIxMS41OTIiIHkxPSIxNy45MjMiIHkyPSIxOS44ODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjAuNDU5IiBzdG9wLWNvbG9yPSIjZmZmIj48L3N0b3A+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iaTdjYjkyZC1pIiB4MT0iOC42OTgiIHgyPSI2LjY2NCIgeTE9IjI3LjE4MyIgeTI9IjE3LjIzOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC4wNjQiIHN0b3AtY29sb3I9IiMwNjNEM0IiIHN0b3Atb3BhY2l0eT0iMCI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC4xNyIgc3RvcC1jb2xvcj0iIzA2M0QzQiIgc3RvcC1vcGFjaXR5PSIwLjEzNSI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMC41NjIiIHN0b3AtY29sb3I9IiMwNjNEM0IiIHN0b3Atb3BhY2l0eT0iMC41OTkiPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjAuODUiIHN0b3AtY29sb3I9IiMwNjNEM0IiIHN0b3Atb3BhY2l0eT0iMC45Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDYzRDNCIj48L3N0b3A+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PC9zdmc+" width="24" height="24" alt="">Microsoft Fabric</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyBpZD0iZjJmNTcwMWUtY2IzYi00ZDZmLWI0MDctNTg2NmVjNWI3Nzg0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImE4OTE5MDFiLTc5YWUtNDkwYS04NTY4LTljNDMzNDQxN2QzNSIgeDE9IjkiIHkxPSI1LjM4IiB4Mj0iOSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC4xOTkiIHN0b3AtY29sb3I9IiMwMDViYTEiIC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3OGQ0IiAvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJiYmRhYTAwOS0yMjgxLTRkYTgtOWU4OS02ZjQxNjg5ZTkxYTciIHgxPSI5IiB5MT0iMTIuNzEzIiB4Mj0iOSIgeTI9IjUuMjg3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMTk4YWIzIiAvPjxzdG9wIG9mZnNldD0iMC4xNzIiIHN0b3AtY29sb3I9IiMzMmJlZGQiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiM1MGU2ZmYiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiM0ZmU0ZmQiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiM0YmRkZjgiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiM0NGQyZWUiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiMzYWMxZTAiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiMyZGFiY2UiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiMxZDkwYjgiIC8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiMxOThhYjMiIC8+PHN0b3Agb2Zmc2V0PSIwLjY2MiIgc3RvcC1jb2xvcj0iIzMyYmVkZCIgLz48c3RvcCBvZmZzZXQ9IjAuOTc1IiBzdG9wLWNvbG9yPSIjNTBlNmZmIiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik05LDAsMS4xNSw0LjQ5djguOTdMOSwxOGw3Ljg1LTQuNDl2LTlabTYuNCwxMi41N0w5LDE2LjI3LDIuNiwxMi42MDlWNS4zOEw5LDEuNjhsNi40LDMuNzFaIiBmaWxsPSIjMDA3OGQ0IiAvPjxwb2x5Z29uIHBvaW50cz0iOSAwIDkgMCAxLjE1IDQuNDkgMi42IDUuMzggOSAxLjY4IDkgMS42OCAxNS40IDUuMzggMTYuODUgNC40OSA5IDAiIGZpbGw9InVybCgjYTg5MTkwMWItNzlhZS00OTBhLTg1NjgtOWM0MzM0NDE3ZDM1KSIgLz48cGF0aCBkPSJNMTIuNzQsMTAuNDc1YS43My43MywwLDAsMC0uMzIzLS4yODZBNS44MzUsNS44MzUsMCwwLDAsNy45MzksNi44NDNMMTQuNDE2LDMuMSwxMi45MSwyLjIzNiw1LjUzNCw2LjVBLjc1Ljc1LDAsMCwwLDUuOTEsNy45LjY4NC42ODQsMCwwLDAsNiw3Ljg3N2wuMTI1LjUyM2E0LjMxOSw0LjMxOSwwLDAsMSw0LjgzNywyLjIzOEwzLjYxMywxNC44ODVsMS41Ljg2NkwxMi40NjYsMTEuNWEuNzI5LjcyOSwwLDAsMCwuMjQyLS4yMzZsLjA3NS0uMDE4Yy0uMDA3LS4wMjktLjAxOC0uMDU1LS4wMjUtLjA4NEEuNzM1LjczNSwwLDAsMCwxMi43NCwxMC40NzVaIiBmaWxsPSIjNTBlNmZmIiAvPjxwYXRoIGQ9Ik0xMi4wOTEsOS4wMTNhMS44NSwxLjg1LDAsMSwwLDEuODUsMS44NUExLjg1LDEuODUsMCwwLDAsMTIuMDkxLDkuMDEzWk01LjkwOSw1LjI2N2ExLjg1LDEuODUsMCwxLDAsMS44NSwxLjg1QTEuODUsMS44NSwwLDAsMCw1LjkwOSw1LjI2N1oiIGZpbGw9InVybCgjYmJkYWEwMDktMjI4MS00ZGE4LTllODktNmY0MTY4OWU5MWE3KSIgLz48L3N2Zz4=" width="24" height="24" alt="">Azure Synapse Analytics</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjZTE1OTE5IiBkPSJNNTcuNjQ2LjAwNGMtMi4yNjkuMDY0LTQuNTEgMS4xNDMtNi4zODQgMy4yMjMtMS4wMyAxLjE0Ni0xLjkwNSAyLjUxLTIuNjMgMy44NTUtMS44OSAzLjU0LTIuMjYyIDcuNTQ3LTIuOTYyIDExLjQzbC0zLjg1MiAyMS44MWMtLjE0OC44NTYtLjUzMiAxLjIxLTEuMyAxLjQ1NWwtMjguMjY4IDguOThjLTIuMDYuNjczLTQuMTI1IDEuNTQzLTUuOTQ3IDIuNy01LjU1OCAzLjUzLTYuMzggOS4zMzgtMi4yMDcgMTQuNDM4IDEuODQyIDIuMjU2IDQuMjE2IDMuODQzIDYuODUgNC45OTZsMTcuNjAzIDcuODQzYy4xNDcuMDguMzA0LjEzMi40NjMuMTYybDMuNzE3IDIuNjgycy0zLjcgNDAuOTQ4IDMuMjQ2IDQzLjc4MWMtLjA2MS0uMDEtLjQxLS4wODItLjQxLS4wODJzLjcwNC43NjEgMi42MDMuNTM3YzEuNDU0LjI3IDEuMjYyLjIyNi4wNzQtLjAxIDIuNTgzLS4zMzQgNy4zMzctMi40OTcgMTUuNTc4LTEwLjc4NGE0Ny4zOTYgNDcuMzk2IDAgMCAwIDEuNzc2LTEuNjc2bDE3LjgtMTkuMjE3IDQuMTYzIDEuNDY1Yy4xNS4yMDcuMzY3LjM0LjcxNC40NDNsMTkuODIzIDYuMDMxYzIuNzA5LjgzNiA1LjM4OSAxLjQ0OCA4LjI3NyAxLjAyNiA1LjE1Ni0uNzU1IDguOTUxLTUgOC45LTEwLjE5Mi0uMDItMi4yOC0uODItNC4zMzktMS44Ny02LjMyNGwtMTMuMTI4LTI0Ljg5OGMtLjQxOC0uNzg3LS40MDUtMS4yOTYuMTk2LTJsMjIuMDU0LTI1LjkyMmMxLjQyOC0xLjcwMyAyLjcxNy0zLjUyOSAzLjQ2NS01LjY0NSAxLjY0My00LjY3LS40ODItOC4zODItNS4zMy05LjI4OS0yLjIyOS0uMzk4LTQuNDI3LS4xODgtNi42LjM4NWwtMzEuNTk3IDguMzk1Yy0uOTMuMjUtMS4zOS4wNzUtMS44OTUtLjc3MmwtMTIuOS0yMS40MzRjLS45NzUtMS42MTUtMi4xNC0zLjE5NC0zLjQ3Ny00LjUyN0M2Mi4yMTIuODkgNTkuOTE1LS4wNTkgNTcuNjQ2LjAwNHptLjk0NCAxOS43MzZjLjUxLjM1OC43NjguNzI3IDEuMDEgMS4xMjVsMTMuODggMjMuMTNjLjM4Mi42MjguNzI1Ljg1IDEuNDg1LjY0OGwyNC40NDMtNi40OTcgNS44ODUtMS41NGMtLjA4Ny40OTMtLjMwMi43OS0uNTM3IDEuMDY4bC0yMC4xNiAyMy42NzJjLS41Ny42ODgtLjYyMyAxLjE3LS4xOTQgMS45NzZsMTIuNzQzIDI0LjE2LjU4NSAxLjIzNy0uMDE1LjAyLTIyLjcyNy02LjI2NC0uMDA2LS4wMTgtNC4yOTgtMS4yMDUtMjUuNDkzIDI4LjI1NiA0LjY2My0zNy4xNS00LjE4NC0xLjgyLjAwOC0uMDA3LTIzLjY3NC05LjRjLjQ1NC0uNDEzLjg2LS41ODUgMS4yODUtLjcxN2wyOC43NzctOS4wOTZjLjY3Ni0uMjEgMS4wNjEtLjQ3IDEuMTI1LTEuMjQybC40MDMtMi4zNTUgMy44NzUtMjEuODA3IDEuMTItNi4xNzR6Ii8+PC9zdmc+Cg==" width="24" height="24" alt="">PySpark</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyBpZD0iZjQzMzc1MDYtNWQ5NS00ZTgwLWI3Y2EtNjg0OThjNmUwMDhlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJhNDIwMjc3LTcwMGUtNDJjYy05ZGU5LTUzODhhNWMxNmU1NCIgeDE9IjkiIHkxPSIxNi45NyIgeDI9IjkiIHkyPSIxLjAzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3OGQ0IiAvPjxzdG9wIG9mZnNldD0iMC4xNiIgc3RvcC1jb2xvcj0iIzEzODBkYSIgLz48c3RvcCBvZmZzZXQ9IjAuNTMiIHN0b3AtY29sb3I9IiMzYzkxZTUiIC8+PHN0b3Agb2Zmc2V0PSIwLjgyIiBzdG9wLWNvbG9yPSIjNTU5Y2VjIiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzVlYTBlZiIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48dGl0bGU+SWNvbi1kZXZvcHMtMjYxPC90aXRsZT48cGF0aCBpZD0iYTkxZjBjYTQtOGZiNy00MDE5LTljMDktMGE1MmUyYzA1NzU0IiBkPSJNMTcsNHY5Ljc0bC00LDMuMjgtNi4yLTIuMjZWMTdMMy4yOSwxMi40MWwxMC4yMy44VjQuNDRabS0zLjQxLjQ5TDcuODUsMVYzLjI5TDIuNTgsNC44NCwxLDYuODd2NC42MWwyLjI2LDFWNi41N1oiIGZpbGw9InVybCgjYmE0MjAyNzctNzAwZS00MmNjLTlkZTktNTM4OGE1YzE2ZTU0KSIgLz48L3N2Zz4=" width="24" height="24" alt="">Azure DevOps</span>
+      <span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjQ1NzQ3IiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNyAxMmgzbTQgMGgzbS01LTJWN20wIDd2MyIvPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjEiLz48cmVjdCB4PSIxMCIgeT0iMyIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjEiLz48cmVjdCB4PSIxMCIgeT0iMTciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHJlY3QgeD0iMTciIHk9IjEwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMSIvPjwvc3ZnPg==" width="24" height="24" alt="">Data Engineering</span>
+    </div>
+    <a class="section-next" href="#projects" aria-controls="projects">
+      <span class="section-next-copy"><strong>See what I’ve built</strong><small>Featured Projects</small></span>
+      <span class="section-next-arrow" aria-hidden="true">↓</span>
+    </a>
+  </section>
+  <section id="projects"><h2>Featured Projects</h2><div class="small-rule"></div>
+    <article>
+      <div>
+        <h3>Financial Data Pipeline Modernization with Microsoft Fabric</h3>
+        <p>Designed a pipeline to deliver budget and forecast data directly to Fabric OneLake.<br>
+          Used Azure Synapse to orchestrate Scala and Spark processing of Delta Lake data.<br>
+          Used Azure SQL metadata to track publication status and refresh watermarks.</p>
+        <a href="https://github.com/Satwikvarma2/financial-data-pipeline-modernization-microsoft-fabric" target="_blank" rel="noopener noreferrer" aria-label="View more about Financial Data Pipeline Modernization with Microsoft Fabric on GitHub">View More ↗</a>
+      </div>
+      <img class="project-image" src="assets/fabric-architecture.png" width="1536" height="1024" alt="Before-and-after architecture for delivering budget and forecast data to Fabric OneLake" loading="lazy">
+    </article>
+    <article>
+      <div>
+        <h3>Azure Synapse Email Notifications with Logic Apps</h3>
+        <p>Designed an email workflow that connects Azure Synapse to Azure Logic Apps.<br>
+          Used Microsoft Entra managed identities to authenticate Synapse and Logic Apps.<br>
+          Delivered email through Microsoft Graph, replacing a SQL and PowerShell handoff.</p>
+        <a href="https://github.com/Satwikvarma2/synapse-logic-app-email-notifications" target="_blank" rel="noopener noreferrer" aria-label="View more about Azure Synapse Email Notifications with Logic Apps on GitHub">View More ↗</a>
+      </div>
+      <img class="project-image" src="assets/synapse-email-architecture.png" width="1536" height="1024" alt="Before-and-after architecture for Azure Synapse email notifications" loading="lazy">
+    </article>
+    <article>
+      <div>
+        <h3>Revenue Reporting Workflow Tracker and SLA Dashboard</h3>
+        <p>Built a dashboard to track revenue reporting workflows across Azure tenants.<br>
+          Combined runbook logs, Synapse runtimes, and publish timestamps in one view.<br>
+          Compared upstream data availability with publish completion to diagnose SLA misses.</p>
+        <a href="https://github.com/Satwikvarma2/Worflow-Tracker-" target="_blank" rel="noopener noreferrer" aria-label="View more about Revenue Reporting Workflow Tracker and SLA Dashboard on GitHub">View More ↗</a>
+      </div>
+      <img class="project-image" src="assets/workflow-tracker-architecture.jpeg" width="1659" height="948" alt="Architecture for tracking revenue reporting workflows across Azure tenants" loading="lazy">
+    </article>
+    <a class="section-next" href="#thanks" aria-controls="thanks">
+      <span class="section-next-copy"><strong>Let’s connect</strong><small>Contact</small></span>
+      <span class="section-next-arrow" aria-hidden="true">↓</span>
+    </a>
+  </section>
+  <section id="thanks"><h2>Thanks!</h2><div class="small-rule"></div><p>Thank you for taking the time to visit my portfolio page. If you're interested in discussing the possibility of me joining your team, feel free to contact me.</p>
+    <div class="contact-links">
+      <a href="tel:+12068502807">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3l-5-2-2 2a13 13 0 0 1-7-7l2-2z"/></svg>
+        <span>(206) 850-2807</span>
+      </a>
+    </div>
+  </section>
+  <footer>© <span id="year">2026</span> Satwik Kunaparaju</footer>
+</main>
+<script>
+  const year = document.getElementById('year');
+  year.textContent = new Date().getFullYear();
+
+  const steps = [...document.querySelectorAll('.card .section-next')];
+  const sections = steps.map(step => document.getElementById(step.getAttribute('aria-controls')));
+  const footer = year.closest('footer');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function revealThrough(index) {
+    sections.forEach((section, position) => {
+      if (position <= index) section.hidden = false;
+      steps[position].setAttribute('aria-expanded', String(!section.hidden));
+    });
+    footer.hidden = sections.at(-1).hidden;
+  }
+
+  sections.forEach(section => {
+    section.hidden = true;
+  });
+  revealThrough(-1);
+
+  steps.forEach((step, index) => {
+    step.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+
+      const section = sections[index];
+      const wasHidden = section.hidden;
+      revealThrough(index);
+      if (wasHidden) section.classList.add('is-revealing');
+
+      const heading = section.querySelector('h2');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+      section.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
