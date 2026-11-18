@@ -115,9 +115,49 @@
   .contact-links a:focus-visible { outline: 2px solid #493723; outline-offset: 3px; }
   .contact-links a span { overflow-wrap: anywhere; }
   .contact-links svg { width: 16px; height: 16px; flex: none; }
+  .reading-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 3px;
+    z-index: 2;
+    background: linear-gradient(90deg, #d39a42, #f5c971);
+    pointer-events: none;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero > * { animation: hero-arrive .72s cubic-bezier(.2,.7,.2,1) both; }
+    .hero > :nth-child(2) { animation-delay: 85ms; }
+    .hero > :nth-child(3) { animation-delay: 150ms; }
+    .hero > :nth-child(4) { animation-delay: 215ms; }
+    .hero > :nth-child(5) { animation-delay: 280ms; }
+    .hero > :nth-child(6) { animation-delay: 345ms; }
+    .card .enter-view { animation: content-arrive .55s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes hero-arrive {
+      from { opacity: 0; translate: 0 16px; }
+    }
+    @keyframes content-arrive {
+      from { opacity: .35; translate: 0 12px; }
+    }
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card .resume, .card #projects article a, .card .contact-links a {
+      transition: translate .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .card .resume:hover, .card #projects article a:hover, .card .contact-links a:hover {
+      translate: 0 -2px;
+      box-shadow: 0 5px 13px #65411d26;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress { display: none; }
+    .card .socials a { transition: none; }
+    .card .socials a:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
+<div class="reading-progress" aria-hidden="true"></div>
 <main class="card">
   <header class="hero" id="home">
     <img class="portrait" src="assets/graduation-portrait-upright.jpg" alt="Satwik wearing his graduation cap and gown">
@@ -192,6 +232,38 @@
   </section>
   <footer>© <span id="year">2026</span> Satwik Kunaparaju</footer>
 </main>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('enter-view');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: 0.14 });
+      document.querySelectorAll('#about, #skills, #projects article, #thanks').forEach(section => {
+        observer.observe(section);
+      });
+    }
+
+    const progress = document.querySelector('.reading-progress');
+    let pendingFrame = 0;
+    function updateProgress() {
+      const distance = document.documentElement.scrollHeight - window.innerHeight;
+      const fraction = distance > 0 ? Math.min(1, Math.max(0, window.scrollY / distance)) : 0;
+      progress.style.transform = 'scaleX(' + fraction + ')';
+      pendingFrame = 0;
+    }
+    function scheduleProgress() {
+      if (!pendingFrame) pendingFrame = requestAnimationFrame(updateProgress);
+    }
+    window.addEventListener('scroll', scheduleProgress, { passive: true });
+    window.addEventListener('resize', scheduleProgress);
+    updateProgress();
+  }
+</script>
 </body>
 </html>
