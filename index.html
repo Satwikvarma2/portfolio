@@ -41,48 +41,8 @@
   }
   .card .resume:hover { background: #ffc45b; }
   .card .resume svg { width: 18px; height: 18px; }
-  .card .section-next {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    width: fit-content;
-    max-width: 100%;
-    min-height: 54px;
-    margin: 22px auto 0;
-    padding: 7px 8px 7px 16px;
-    border: 1px solid #e2ccaa;
-    border-radius: 16px;
-    background: #fff8ea;
-    color: #27231e;
-    text-align: left;
-    text-decoration: none;
-    transition: background .2s, border-color .2s;
-  }
-  .card .section-next:hover { background: #fff0d0; border-color: #d4a553; }
-  .card .section-next:focus-visible { outline: 2px solid #493723; outline-offset: 4px; }
-  .section-next-copy { display: grid; gap: 2px; }
-  .section-next-copy strong { font-size: 15px; }
-  .section-next-copy small { color: #655541; font-size: 12px; }
-  .section-next-arrow {
-    display: grid;
-    place-items: center;
-    flex: 0 0 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #ffd280;
-    font-size: 20px;
-  }
-  .card section[hidden], .card footer[hidden] { display: none; }
-  .card section h2:focus { outline-offset: 5px; }
-  .card section h2:focus:not(:focus-visible) { outline: none; }
-  .card section.is-revealing { animation: reveal-section .4s ease-out both; }
-  @keyframes reveal-section {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .card section.is-revealing { animation: none; }
   }
   .card section { padding-top: 52px; }
   .card section h2 { font-size: clamp(24px, 4vw, 30px); }
@@ -170,19 +130,11 @@
       <a href="https://github.com/Satwikvarma2" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.09c-3.14.68-3.8-1.33-3.8-1.33-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.69 1.24 3.35.95.1-.74.4-1.24.73-1.53-2.51-.29-5.15-1.26-5.15-5.59 0-1.24.44-2.25 1.18-3.04-.12-.29-.51-1.44.11-3 0 0 .96-.31 3.08 1.16a10.65 10.65 0 0 1 5.61 0c2.12-1.47 3.08-1.16 3.08-1.16.62 1.56.23 2.71.11 3 .74.79 1.18 1.8 1.18 3.04 0 4.34-2.65 5.3-5.17 5.59.41.35.78 1.05.78 2.12v3.15c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg></a>
     </nav>
     <a class="resume" href="https://drive.google.com/file/d/15_39ZvSh3DPU_itkJtJqrqIdoHCabHTE/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 12h6M9 16h6"/></svg>View Resume</a>
-    <a class="section-next" href="#about" aria-controls="about">
-      <span class="section-next-copy"><strong>Click on me to learn more</strong><small>About Me</small></span>
-      <span class="section-next-arrow" aria-hidden="true">↓</span>
-    </a>
   </header>
   <section id="about"><h2>About Me</h2><div class="small-rule"></div>
     <p>I'm a Data Engineer at Infosys, working on Microsoft projects focused on building and modernizing scalable, secure cloud data platforms.</p>
     <p>I specialize in Azure Synapse Analytics, Microsoft Fabric, Azure Data Factory, Azure SQL, Python, and Azure DevOps. My work involves data pipelines, cloud migrations, CI/CD automation, and secure system integrations.</p>
     <p>With a Master's in Data Science from Seattle University, I'm passionate about solving complex engineering challenges and building reliable, production-ready data solutions that deliver meaningful business impact.</p>
-    <a class="section-next" href="#skills" aria-controls="skills">
-      <span class="section-next-copy"><strong>Explore my toolkit</strong><small>Skills</small></span>
-      <span class="section-next-arrow" aria-hidden="true">↓</span>
-    </a>
   </section>
   <section id="skills"><h2>Skills</h2><div class="small-rule"></div>
     <div class="skill-grid">
@@ -197,10 +149,6 @@
       <span><img src="data:image/svg+xml;base64,PHN2ZyBpZD0iZjQzMzc1MDYtNWQ5NS00ZTgwLWI3Y2EtNjg0OThjNmUwMDhlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJhNDIwMjc3LTcwMGUtNDJjYy05ZGU5LTUzODhhNWMxNmU1NCIgeDE9IjkiIHkxPSIxNi45NyIgeDI9IjkiIHkyPSIxLjAzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3OGQ0IiAvPjxzdG9wIG9mZnNldD0iMC4xNiIgc3RvcC1jb2xvcj0iIzEzODBkYSIgLz48c3RvcCBvZmZzZXQ9IjAuNTMiIHN0b3AtY29sb3I9IiMzYzkxZTUiIC8+PHN0b3Agb2Zmc2V0PSIwLjgyIiBzdG9wLWNvbG9yPSIjNTU5Y2VjIiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzVlYTBlZiIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48dGl0bGU+SWNvbi1kZXZvcHMtMjYxPC90aXRsZT48cGF0aCBpZD0iYTkxZjBjYTQtOGZiNy00MDE5LTljMDktMGE1MmUyYzA1NzU0IiBkPSJNMTcsNHY5Ljc0bC00LDMuMjgtNi4yLTIuMjZWMTdMMy4yOSwxMi40MWwxMC4yMy44VjQuNDRabS0zLjQxLjQ5TDcuODUsMVYzLjI5TDIuNTgsNC44NCwxLDYuODd2NC42MWwyLjI2LDFWNi41N1oiIGZpbGw9InVybCgjYmE0MjAyNzctNzAwZS00MmNjLTlkZTktNTM4OGE1YzE2ZTU0KSIgLz48L3N2Zz4=" width="24" height="24" alt="">Azure DevOps</span>
       <span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjQ1NzQ3IiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNyAxMmgzbTQgMGgzbS01LTJWN20wIDd2MyIvPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjEiLz48cmVjdCB4PSIxMCIgeT0iMyIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjEiLz48cmVjdCB4PSIxMCIgeT0iMTciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHJlY3QgeD0iMTciIHk9IjEwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMSIvPjwvc3ZnPg==" width="24" height="24" alt="">Data Engineering</span>
     </div>
-    <a class="section-next" href="#projects" aria-controls="projects">
-      <span class="section-next-copy"><strong>See what I’ve built</strong><small>Featured Projects</small></span>
-      <span class="section-next-arrow" aria-hidden="true">↓</span>
-    </a>
   </section>
   <section id="projects"><h2>Featured Projects</h2><div class="small-rule"></div>
     <article>
@@ -233,10 +181,6 @@
       </div>
       <img class="project-image" src="assets/workflow-tracker-architecture.jpeg" width="1659" height="948" alt="Architecture for tracking revenue reporting workflows across Azure tenants" loading="lazy">
     </article>
-    <a class="section-next" href="#thanks" aria-controls="thanks">
-      <span class="section-next-copy"><strong>Let’s connect</strong><small>Contact</small></span>
-      <span class="section-next-arrow" aria-hidden="true">↓</span>
-    </a>
   </section>
   <section id="thanks"><h2>Thanks!</h2><div class="small-rule"></div><p>Thank you for taking the time to visit my portfolio page. If you're interested in discussing the possibility of me joining your team, feel free to contact me.</p>
     <div class="contact-links">
@@ -248,44 +192,6 @@
   </section>
   <footer>© <span id="year">2026</span> Satwik Kunaparaju</footer>
 </main>
-<script>
-  const year = document.getElementById('year');
-  year.textContent = new Date().getFullYear();
-
-  const steps = [...document.querySelectorAll('.card .section-next')];
-  const sections = steps.map(step => document.getElementById(step.getAttribute('aria-controls')));
-  const footer = year.closest('footer');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  function revealThrough(index) {
-    sections.forEach((section, position) => {
-      if (position <= index) section.hidden = false;
-      steps[position].setAttribute('aria-expanded', String(!section.hidden));
-    });
-    footer.hidden = sections.at(-1).hidden;
-  }
-
-  sections.forEach(section => {
-    section.hidden = true;
-  });
-  revealThrough(-1);
-
-  steps.forEach((step, index) => {
-    step.addEventListener('click', event => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-
-      const section = sections[index];
-      const wasHidden = section.hidden;
-      revealThrough(index);
-      if (wasHidden) section.classList.add('is-revealing');
-
-      const heading = section.querySelector('h2');
-      heading.tabIndex = -1;
-      heading.focus({ preventScroll: true });
-      section.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
-    });
-  });
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
