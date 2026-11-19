@@ -154,6 +154,52 @@
     .card .socials a { transition: none; }
     .card .socials a:hover { transform: none; }
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .card .portrait {
+      animation: hero-arrive .72s cubic-bezier(.2,.7,.2,1) both,
+        portrait-glow 1.65s .45s ease-out;
+    }
+    .card .small-rule.enter-view {
+      transform-origin: center;
+      animation: rule-open .65s cubic-bezier(.2,.7,.2,1) both;
+    }
+    .card .skill-grid.enter-view { animation: none; }
+    .card .skill-grid.enter-view > span {
+      animation: content-arrive .42s cubic-bezier(.2,.7,.2,1) both;
+      animation-delay: calc(var(--tile-order, 0) * 36ms);
+    }
+    .skill-grid > :nth-child(2) { --tile-order: 1; }
+    .skill-grid > :nth-child(3) { --tile-order: 2; }
+    .skill-grid > :nth-child(4) { --tile-order: 3; }
+    .skill-grid > :nth-child(5) { --tile-order: 4; }
+    .skill-grid > :nth-child(6) { --tile-order: 5; }
+    .skill-grid > :nth-child(7) { --tile-order: 6; }
+    .skill-grid > :nth-child(8) { --tile-order: 7; }
+    .skill-grid > :nth-child(9) { --tile-order: 8; }
+    .skill-grid > :nth-child(10) { --tile-order: 9; }
+    @keyframes portrait-glow {
+      0%, 100% { box-shadow: 0 0 0 0 #e9ad4900; }
+      38% { box-shadow: 0 0 0 5px #e9ad4940, 0 10px 32px #dba65c50; }
+    }
+    @keyframes rule-open {
+      from { transform: scaleX(.1); opacity: .25; }
+    }
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card .skill-grid > span, .card #projects .project-image {
+      transition: transform .28s ease, box-shadow .28s ease, background-color .28s ease;
+    }
+    .card .skill-grid > span:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 13px #65411d14;
+      background-color: #fffaf0;
+    }
+    .card #projects article:hover .project-image,
+    .card #projects article:focus-within .project-image {
+      transform: translateY(-3px) scale(1.025);
+      box-shadow: 0 10px 22px #65411d23;
+    }
+  }
 </style>
 </head>
 <body>
@@ -244,7 +290,7 @@
           observer.unobserve(entry.target);
         }
       }, { threshold: 0.14 });
-      document.querySelectorAll('#about, #skills, #projects article, #thanks').forEach(section => {
+      document.querySelectorAll('#about, #skills, #projects article, #thanks, .skill-grid, .small-rule').forEach(section => {
         observer.observe(section);
       });
     }
